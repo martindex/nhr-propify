@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 public class Address implements Serializable {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = false, updatable = false)
     private Long id;
 
     public String street; // must not be null or blank

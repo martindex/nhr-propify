@@ -13,7 +13,7 @@ public class PropertyType {
     public static final PropertyType TOWNHOUSE = new PropertyType("Townhouse");
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = false, updatable = false)
     private Long id;
 
     public String type;

@@ -2,21 +2,28 @@ package com.propify.challenge;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Entity
 public class Property implements Serializable {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = false, updatable = false)
     private Long id;
 
     public String createTime;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_type_id", referencedColumnName = "id")
     public PropertyType type;
 
     public double rentPrice; // must be greater than 0, 2 decimal places
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     public Address address; // must not be null
 
     public String emailAddress; // must be a valid email address
